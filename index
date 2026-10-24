@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>СТУД-СПАС-КРУГ v1.0 | Симулятор Выживания</title>
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <!-- Подключаем строгий трафаретный шрифт Oswald для заголовков -->
+    <link href="https://googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Тактическая сетка на бэкграунде -->
+    <div class="tactical-grid"></div>
+
+    <div class="app-container">
+        
+        <!-- ================= ЭКРАН 1: ТРЕВОГА ================= -->
+        <section id="screen-alarm" class="screen active">
+            <div class="radar-warning">⚠️ ОБНАРУЖЕН КРИТИЧЕСКИЙ УРОВЕНЬ НИЩЕТЫ ⚠️</div>
+            
+            <div class="bunker-button-zone">
+                <!-- Главная красная кнопка -->
+                <button id="btn-alarm" class="nuclear-btn">
+                    <span>У МЕНЯ ОСТАЛОСЬ<br>500 РУБЛЕЙ</span>
+                </button>
+            </div>
+
+            <p class="alarm-subtext">
+                Нажми, если стипендия закончилась, баланс карты вызывает слёзы, а выйти из общаги всё равно хочется.
+            </p>
+        </section>
+
+        <!-- ================= ЭКРАН 2: КАЛЬКУЛЯТОР НИЩЕТЫ ================= -->
+        <section id="screen-calc" class="screen">
+            <header class="tactical-header">
+                <h2>БОРТОВОЙ ЖУРНАЛ БЕДНОСТИ</h2>
+                <div class="status-indicator"><span class="blink-dot"></span> СИСТЕМА АКТИВНА</div>
+            </header>
+
+            <!-- Блок вывода суммы -->
+            <div class="budget-display">
+                ДОСТУПНЫЕ РЕСУРСЫ: <span id="budget-value">[ 500 РУБЛЕЙ ]</span>
+            </div>
+
+            <!-- Ползунок-тумблер -->
+            <div class="slider-container">
+                <input type="range" id="budget-slider" min="0" max="2000" value="500" step="10">
+                <div class="slider-scale">
+                    <span>0₽</span>
+                    <span>500₽</span>
+                    <span>1000₽</span>
+                    <span>1500₽</span>
+                    <span>2000₽</span>
+                </div>
+            </div>
+
+            <!-- Контейнер для вердикта системы -->
+            <div class="verdict-box">
+                <h3 id="verdict-title">СТАТУС: Загрузка...</h3>
+                <div id="verdict-text" class="verdict-text">
+                    <!-- Сюда JS подставит текст -->
+                </div>
+            </div>
+
+            <!-- Интерактивные кнопки управления -->
+            <div class="control-actions">
+                <button id="btn-random" class="action-btn secondary-btn">🎲 МНЕ ЛЕНЬ ДУМАТЬ, ВЫБЕРИ ЗА МЕНЯ</button>
+                <button id="btn-save" class="action-btn primary-btn">💾 СОХРАНИТЬ ПЛАН В БУНКЕР</button>
+            </div>
+
+            <!-- Блок сохраненного плана -->
+            <div id="saved-plan-box" class="saved-plan-box hidden">
+                <h4>📌 ПОСЛЕДНИЙ УТВЕРЖДЕННЫЙ ПЛАН БЫСТРОГО РЕАГИРОВАНИЯ:</h4>
+                <p id="saved-plan-text"></p>
+            </div>
+        </section>
+        
+    </div>
+
+    <!-- Элемент аудио-эффекта сирены при нажатии кнопки (Генерируется через JS синусоида, чтобы не тащить файлы) -->
+    <script src="script.js"></script>
+</body>
+</html>
